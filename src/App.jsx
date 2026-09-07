@@ -195,6 +195,105 @@ function App() {
         hasApiKey={!!effectiveApiKey}
       />
 
+      {/* CAD Telemetry Sub-Bar Below Top Nav Bar */}
+      {activeTab === 'emergency' && (
+        <div style={{
+          background: 'rgba(6, 17, 30, 0.92)',
+          borderBottom: '1px solid var(--border-subtle)',
+          padding: '5px 20px',
+          position: 'sticky',
+          top: '60px',
+          zIndex: 950,
+          backdropFilter: 'blur(8px)'
+        }}>
+          <div style={{
+            maxWidth: '1600px',
+            margin: '0 auto',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px'
+          }}>
+            {/* Current Location & Traffic Badges */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: '6px',
+                padding: '4px 10px', background: 'var(--bg-surface)',
+                border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
+                fontSize: '0.74rem', color: '#fff', fontWeight: 600
+              }}>
+                <MapPin size={13} color="var(--green-400)" />
+                <select
+                  value={activeCity}
+                  onChange={e => {
+                    const city = e.target.value;
+                    setActiveCity(city);
+                    if (triageResult) {
+                      const ranked = evaluateHospitals(city, triageResult, trafficMultiplier);
+                      setHospitals(ranked);
+                      const top = ranked.find(h => !h.isBypass);
+                      if (top) setSelectedHospitalId(top.id);
+                    }
+                  }}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    color: '#fff',
+                    fontSize: '0.74rem',
+                    fontWeight: 600,
+                    outline: 'none',
+                    cursor: 'pointer',
+                    fontFamily: 'var(--font-sans)'
+                  }}
+                >
+                  <optgroup label="Punjab Province" style={{ background: 'var(--navy-800)', fontWeight: 700 }}>
+                    <option value="all_punjab" style={{ background: 'var(--navy-800)' }}>📍 All Punjab (80+ Facilities)</option>
+                    <option value="lahore" style={{ background: 'var(--navy-800)' }}>Lahore Division</option>
+                    <option value="islamabad_rawalpindi" style={{ background: 'var(--navy-800)' }}>Rawalpindi & Islamabad</option>
+                    <option value="faisalabad" style={{ background: 'var(--navy-800)' }}>Faisalabad Division</option>
+                    <option value="multan" style={{ background: 'var(--navy-800)' }}>Multan Division</option>
+                    <option value="gujranwala" style={{ background: 'var(--navy-800)' }}>Gujranwala Division</option>
+                    <option value="sialkot" style={{ background: 'var(--navy-800)' }}>Sialkot District</option>
+                    <option value="gujrat" style={{ background: 'var(--navy-800)' }}>Gujrat District</option>
+                    <option value="bahawalpur" style={{ background: 'var(--navy-800)' }}>Bahawalpur & R.Y. Khan</option>
+                    <option value="sargodha" style={{ background: 'var(--navy-800)' }}>Sargodha Division</option>
+                    <option value="sahiwal" style={{ background: 'var(--navy-800)' }}>Sahiwal & Okara</option>
+                    <option value="dg_khan" style={{ background: 'var(--navy-800)' }}>D.G. Khan & Muzaffargarh</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: '5px',
+                padding: '4px 10px', background: 'var(--bg-surface)',
+                border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
+                fontSize: '0.74rem', color: '#fff', fontWeight: 600,
+                fontFamily: 'var(--font-mono)'
+              }}>
+                <Sliders size={12} color="var(--cyan-400)" />
+                <span>{trafficMultiplier.toFixed(1)}× Traffic</span>
+              </div>
+            </div>
+
+            {/* Grid Cadence Telemetry */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              fontSize: '0.70rem',
+              color: 'var(--text-muted)'
+            }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--green-400)', display: 'inline-block' }} />
+                <span>Punjab CAD Grid Live</span>
+              </span>
+              <span>•</span>
+              <span>84 Facilities Online</span>
+            </div>
+          </div>
+        </div>
+      )}
+
       <ApiKeyModal
         isOpen={showApiModal}
         onClose={() => setShowApiModal(false)}
@@ -291,39 +390,14 @@ function App() {
             {/* Terminal Container */}
             <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
               
-              {/* Region Telemetry (Left) & Channel Mode Selector (Top Right) */}
+              {/* Channel Mode Selector (TOP RIGHT above Chat Input) */}
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '12px',
-                width: '100%'
+                justifyContent: 'flex-end',
+                width: '100%',
+                marginBottom: '2px'
               }}>
-                {/* Left: Division & Traffic Telemetry Badges */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: '5px',
-                    padding: '6px 11px', background: 'var(--bg-surface)',
-                    border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
-                    fontSize: '0.74rem', color: '#fff', fontWeight: 600
-                  }}>
-                    <MapPin size={12} color="var(--green-400)" />
-                    <span>{region.name}</span>
-                  </div>
-
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: '5px',
-                    padding: '6px 11px', background: 'var(--bg-surface)',
-                    border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
-                    fontSize: '0.74rem', color: '#fff', fontWeight: 600,
-                    fontFamily: 'var(--font-mono)'
-                  }}>
-                    <Sliders size={12} color="var(--cyan-400)" />
-                    <span>{trafficMultiplier.toFixed(1)}× Traffic</span>
-                  </div>
-                </div>
-
-                {/* Right: Mode Selector (TOP RIGHT) */}
                 <div style={{
                   display: 'inline-flex',
                   alignItems: 'center',

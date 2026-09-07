@@ -223,41 +223,6 @@ export default function Header({
             </select>
           </div>
 
-          {/* Region / District Selector */}
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: '6px',
-            background: 'var(--navy-700)',
-            borderRadius: 'var(--radius-md)',
-            padding: '5px 10px'
-          }}>
-            <MapPin size={13} color="var(--green-400)" />
-            <select
-              value={activeCity}
-              onChange={e => setActiveCity(e.target.value)}
-              style={{
-                background: 'transparent', border: 'none',
-                color: '#fff', fontSize: '0.8rem', fontWeight: 600,
-                outline: 'none', cursor: 'pointer',
-                fontFamily: 'var(--font-sans)'
-              }}
-            >
-              <optgroup label="Punjab Province" style={{ background: 'var(--navy-800)', fontWeight: 700 }}>
-                <option value="all_punjab" style={{ background: 'var(--navy-800)' }}>📍 All Punjab (80+ Facilities)</option>
-                <option value="lahore" style={{ background: 'var(--navy-800)' }}>Lahore Division</option>
-                <option value="islamabad_rawalpindi" style={{ background: 'var(--navy-800)' }}>Rawalpindi & Islamabad</option>
-                <option value="faisalabad" style={{ background: 'var(--navy-800)' }}>Faisalabad Division</option>
-                <option value="multan" style={{ background: 'var(--navy-800)' }}>Multan Division</option>
-                <option value="gujranwala" style={{ background: 'var(--navy-800)' }}>Gujranwala Division</option>
-                <option value="sialkot" style={{ background: 'var(--navy-800)' }}>Sialkot District</option>
-                <option value="gujrat" style={{ background: 'var(--navy-800)' }}>Gujrat District</option>
-                <option value="bahawalpur" style={{ background: 'var(--navy-800)' }}>Bahawalpur & R.Y. Khan</option>
-                <option value="sargodha" style={{ background: 'var(--navy-800)' }}>Sargodha Division</option>
-                <option value="sahiwal" style={{ background: 'var(--navy-800)' }}>Sahiwal & Okara</option>
-                <option value="dg_khan" style={{ background: 'var(--navy-800)' }}>D.G. Khan & Muzaffargarh</option>
-              </optgroup>
-            </select>
-          </div>
-
           {/* Alibaba Cloud Badge */}
           <div
             style={{

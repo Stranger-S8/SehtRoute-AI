@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, MapPin, Settings, Presentation, Building2, Hospital } from 'lucide-react';
+import { Activity, MapPin, Settings, Building2, Hospital } from 'lucide-react';
 import { HEALTHCARE_REGIONS } from '../data/hospitalsData';
 
 export default function Header({
@@ -47,8 +47,7 @@ export default function Header({
         <nav style={{ display: 'flex', alignItems: 'center', gap: '4px', height: '100%' }}>
           {[
             { key: 'emergency', label: 'Emergency Routing', icon: Activity },
-            { key: 'registry', label: 'Punjab Hospital Registry (80+)', icon: Building2 },
-            { key: 'deck', label: 'Pitch Deck', icon: Presentation }
+            { key: 'registry', label: 'Punjab Hospital Registry (80+)', icon: Building2 }
           ].map(tab => {
             const isActive = activeTab === tab.key;
             const Icon = tab.icon;

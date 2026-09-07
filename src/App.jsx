@@ -5,7 +5,6 @@ import HospitalCards from './components/HospitalCards';
 import DecisionMap from './components/DecisionMap';
 import HospitalRegistry from './components/HospitalRegistry';
 import HospitalDetailModal from './components/HospitalDetailModal';
-import PitchDeck from './components/PitchDeck';
 import ApiKeyModal from './components/ApiKeyModal';
 import { parseWithGemini, getActiveGeminiKey } from './utils/geminiApi';
 import { evaluateHospitals, generateReservationToken } from './utils/ttdcEngine';
@@ -23,7 +22,7 @@ import {
 
 function App() {
   // Navigation
-  const [activeTab, setActiveTab] = useState('emergency'); // 'emergency' | 'registry' | 'deck'
+  const [activeTab, setActiveTab] = useState('emergency'); // 'emergency' | 'registry'
   const [activeCity, setActiveCity] = useState('lahore');
 
   // API Key - initialized from local storage or .env
@@ -150,9 +149,6 @@ function App() {
           setActiveCity(rKey);
           break;
         }
-      }
-      if (activeTab === 'deck') {
-        setActiveTab('emergency');
       }
     }
   }, [activeTab]);
@@ -300,9 +296,7 @@ function App() {
         isLocking={isLocking}
       />
 
-      {activeTab === 'deck' ? (
-        <PitchDeck />
-      ) : activeTab === 'registry' ? (
+      {activeTab === 'registry' ? (
         <HospitalRegistry
           onSelectHospitalForModal={(h) => setModalHospital(h)}
           onSelectHospitalForRouting={(h) => {

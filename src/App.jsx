@@ -17,8 +17,24 @@ import {
   MapPin, 
   Building2, 
   ArrowLeft, 
-  Sparkles
+  HeartPulse,
+  AlertTriangle,
+  Activity,
+  Wind,
+  Baby,
+  Flame,
+  Radio,
+  Shield
 } from 'lucide-react';
+
+const TACTICAL_PRESETS = [
+  { label: 'Cardiac (STEMI)', icon: HeartPulse, text: 'Severe crushing chest pain radiating to left arm & diaphoresis, age 55 male. Suspected STEMI.' },
+  { label: 'Major Trauma', icon: AlertTriangle, text: 'Road accident on Canal Road, severe head bleeding and unconscious patient.' },
+  { label: 'Acute Stroke', icon: Activity, text: 'Sudden slurred speech, facial droop right side, onset 20 mins ago.' },
+  { label: 'Respiratory Failure', icon: Wind, text: 'Patient gasping for air, SpO2 81%, asthma history, cyanotic lips.' },
+  { label: 'Pediatric Critical', icon: Baby, text: 'Bacha 8 mahine ka hai, shadeed 104°F bukhar aur jhatkay lag rahe hain.' },
+  { label: 'Thermal / Burn', icon: Flame, text: 'Kitchen gas cylinder burst, 40% body burns, patient conscious in severe pain.' }
+];
 
 function App() {
   // Navigation
@@ -133,7 +149,7 @@ function App() {
     const available = hospitals.filter(h => h.id !== failedHospitalId && !h.isBypass);
     if (available.length > 0) {
       const nextHosp = available[0];
-      setContentionAlert(`⚠️ ATOMIC LEASE FAILURE at ${failedHosp?.shortName || 'facility'}. Automated Failover: Routing to #${hospitals.indexOf(nextHosp) + 1}: ${nextHosp.shortName}`);
+      setContentionAlert(`ATOMIC LEASE FAILURE at ${failedHosp?.shortName || 'facility'}. Failover routed to #${hospitals.indexOf(nextHosp) + 1}: ${nextHosp.shortName}`);
       setSelectedHospitalId(nextHosp.id);
     }
   }, [hospitals]);
@@ -214,7 +230,7 @@ function App() {
         /* EMERGENCY TRIAGE WORKFLOW */
         !hasActiveQuery ? (
           /* ============================================================
-             INITIAL STATE: Minimal, Clean, Brand-Focused Emergency Intake
+             INITIAL STATE: Tactical Dispatch Console (No AI Fluff)
              ============================================================ */
           <div style={{
             flex: 1,
@@ -223,28 +239,48 @@ function App() {
             alignItems: 'center',
             justifyContent: 'center',
             padding: '30px 20px',
-            maxWidth: '740px',
+            maxWidth: '780px',
             margin: '0 auto',
             width: '100%'
           }}>
-            {/* Co-Branding Logos: Alkhidmat Foundation & Alibaba Cloud */}
+            {/* Live Operational Beacon */}
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '4px 12px',
+              background: 'rgba(0, 137, 123, 0.12)',
+              border: '1px solid rgba(0, 137, 123, 0.3)',
+              borderRadius: 'var(--radius-full)',
+              marginBottom: '18px',
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              color: 'var(--green-400)',
+              fontFamily: 'var(--font-mono)',
+              letterSpacing: '0.04em'
+            }}>
+              <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--green-400)', display: 'inline-block', boxShadow: '0 0 8px var(--green-400)' }} />
+              <span>ALKHIDMAT 1023 FLEET CAD // PUNJAB GRID LIVE</span>
+            </div>
+
+            {/* Official Co-Branding Logos */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '18px',
-              marginBottom: '16px'
+              gap: '20px',
+              marginBottom: '18px'
             }}>
               <img
-                src="/logo-alkhidmat-enhanced.png"
+                src="/logo-alkhidmat-white-text.png"
                 alt="Alkhidmat Foundation Pakistan"
-                style={{ height: '46px', width: 'auto', objectFit: 'contain' }}
+                style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
               />
-              <div style={{ width: '1px', height: '28px', background: 'var(--gray-300)' }} />
+              <div style={{ width: '1px', height: '24px', background: 'var(--border-medium)' }} />
               <img
                 src="/logo-alibaba-enhanced.png"
                 alt="Alibaba Cloud"
-                style={{ height: '26px', width: 'auto', objectFit: 'contain' }}
+                style={{ height: '24px', width: 'auto', objectFit: 'contain' }}
               />
             </div>
 
@@ -252,29 +288,29 @@ function App() {
             <h1 style={{
               fontSize: '2rem',
               fontWeight: 800,
-              color: 'var(--navy-900)',
+              color: '#fff',
               textAlign: 'center',
               margin: '0 0 6px',
               letterSpacing: '-0.02em',
               lineHeight: 1.2
             }}>
-              Emergency Triage & Dispatch
+              Emergency Dispatch & Triage Console
             </h1>
 
-            {/* Simple, Non-AI Subtitle */}
+            {/* Concise Subtitle */}
             <p style={{
-              fontSize: '0.88rem',
-              color: 'var(--gray-500)',
+              fontSize: '0.86rem',
+              color: 'var(--text-secondary)',
               textAlign: 'center',
               margin: '0 0 20px'
             }}>
-              Real-time hospital capacity routing for Alkhidmat emergency fleet across Punjab.
+              Real-time hospital capacity routing for Alkhidmat 1023 fleet across Punjab.
             </p>
 
-            {/* Intake Box Container */}
-            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {/* Terminal Container */}
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
               
-              {/* Mode & City Bar */}
+              {/* Channel Selector & Region Info Bar */}
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr auto',
@@ -282,10 +318,17 @@ function App() {
                 alignItems: 'center'
               }}>
                 {/* Mode Selector */}
-                <div className="card" style={{ padding: '3px', display: 'grid', gridTemplateColumns: '1fr 1fr', background: 'var(--navy-50)' }}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  background: 'var(--bg-input)',
+                  padding: '3px',
+                  borderRadius: 'var(--radius-md)',
+                  border: '1px solid var(--border-subtle)'
+                }}>
                   {[
-                    { key: 'citizen', label: 'Citizen', icon: User },
-                    { key: 'paramedic', label: 'Paramedic 1122', icon: Stethoscope }
+                    { key: 'citizen', label: 'Citizen Channel', icon: User },
+                    { key: 'paramedic', label: 'Paramedic 1122 CAD', icon: Stethoscope }
                   ].map(m => {
                     const isActive = mode === m.key;
                     return (
@@ -294,110 +337,120 @@ function App() {
                         onClick={() => setMode(m.key)}
                         style={{
                           padding: '7px 12px',
-                          background: isActive ? (m.key === 'citizen' ? 'var(--navy-800)' : 'var(--green-600)') : 'transparent',
-                          color: isActive ? '#fff' : 'var(--gray-600)',
+                          background: isActive ? (m.key === 'citizen' ? 'var(--navy-600)' : 'var(--green-600)') : 'transparent',
+                          color: isActive ? '#fff' : 'var(--text-muted)',
                           border: 'none',
-                          borderRadius: 'var(--radius-md)',
+                          borderRadius: 'var(--radius-sm)',
                           cursor: 'pointer',
                           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
                           transition: 'all 0.15s ease',
                           fontFamily: 'var(--font-sans)',
-                          fontSize: '0.8rem',
+                          fontSize: '0.78rem',
                           fontWeight: 700
                         }}
                       >
-                        <m.icon size={14} />
+                        <m.icon size={13} />
                         <span>{m.label}</span>
                       </button>
                     );
                   })}
                 </div>
 
-                {/* City & Traffic Quick Badges */}
+                {/* Division & Traffic Telemetry Badges */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <div style={{
                     display: 'flex', alignItems: 'center', gap: '5px',
-                    padding: '7px 10px', background: 'var(--white)',
-                    border: '1px solid var(--gray-200)', borderRadius: 'var(--radius-md)',
-                    fontSize: '0.76rem', color: 'var(--navy-800)', fontWeight: 600
+                    padding: '7px 11px', background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
+                    fontSize: '0.74rem', color: '#fff', fontWeight: 600
                   }}>
-                    <MapPin size={13} color="var(--green-600)" />
+                    <MapPin size={12} color="var(--green-400)" />
                     <span>{region.name}</span>
                   </div>
 
                   <div style={{
                     display: 'flex', alignItems: 'center', gap: '5px',
-                    padding: '7px 10px', background: 'var(--white)',
-                    border: '1px solid var(--gray-200)', borderRadius: 'var(--radius-md)',
-                    fontSize: '0.76rem', color: 'var(--navy-800)', fontWeight: 600
+                    padding: '7px 11px', background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
+                    fontSize: '0.74rem', color: '#fff', fontWeight: 600,
+                    fontFamily: 'var(--font-mono)'
                   }}>
-                    <Sliders size={12} color="var(--navy-500)" />
+                    <Sliders size={12} color="var(--cyan-400)" />
                     <span>{trafficMultiplier.toFixed(1)}× Traffic</span>
                   </div>
                 </div>
               </div>
 
-              {/* Chat Input Component */}
+              {/* Tactical Chat Input Component */}
               <ChatInput mode={mode} onSubmit={handleSubmit} isProcessing={isProcessing} />
 
-              {/* Compact Quick Test Chips (1-Click) */}
-              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px', marginTop: '4px' }}>
-                <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--gray-400)', textTransform: 'uppercase', marginRight: '4px' }}>
-                  Quick:
+              {/* Clinical Protocol Quick Chips (Zero Emojis) */}
+              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>
+                <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginRight: '4px', letterSpacing: '0.04em' }}>
+                  Protocols:
                 </span>
-                {[
-                  { label: '🫀 Chest Pain / STEMI', text: 'Severe crushing chest pain radiating to left arm & sweating (55M)' },
-                  { label: '🚗 Trauma / Crash', text: 'Road accident on Canal Road, severe head bleeding and unconscious patient' },
-                  { label: '🧠 Stroke (CVA)', text: 'Sudden slurred speech, facial droop right side, onset 20 mins ago' },
-                  { label: '🫁 Breathing Trouble', text: 'Patient gasping for air, SpO2 81%, asthma history, cyanotic lips' },
-                  { label: '👶 Child High Fever', text: 'Bacha 8 mahine ka hai, shadeed 104°F bukhar aur jhatkay lag rahe hain' },
-                  { label: '🔥 Severe Burns', text: 'Kitchen gas cylinder burst, 40% body burns, patient conscious in severe pain' }
-                ].map((preset, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => handleSubmit(preset.text)}
-                    style={{
-                      padding: '5px 11px',
-                      background: 'var(--white)',
-                      border: '1px solid var(--gray-300)',
-                      borderRadius: 'var(--radius-full)',
-                      fontSize: '0.73rem',
-                      fontWeight: 600,
-                      color: 'var(--navy-700)',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease'
-                    }}
-                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--navy-500)'; e.currentTarget.style.background = 'var(--navy-50)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--gray-300)'; e.currentTarget.style.background = 'var(--white)'; }}
-                  >
-                    {preset.label}
-                  </button>
-                ))}
+                {TACTICAL_PRESETS.map((preset, idx) => {
+                  const Icon = preset.icon;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => handleSubmit(preset.text)}
+                      style={{
+                        padding: '5px 11px',
+                        background: 'rgba(255,255,255,0.04)',
+                        border: '1px solid var(--border-subtle)',
+                        borderRadius: 'var(--radius-sm)',
+                        fontSize: '0.72rem',
+                        fontWeight: 600,
+                        color: 'var(--text-secondary)',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--cyan-400)';
+                        e.currentTarget.style.background = 'rgba(255,255,255,0.09)';
+                        e.currentTarget.style.color = '#fff';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                        e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+                        e.currentTarget.style.color = 'var(--text-secondary)';
+                      }}
+                    >
+                      <Icon size={11} color="var(--green-400)" />
+                      <span>{preset.label}</span>
+                    </button>
+                  );
+                })}
               </div>
 
-              {/* Clean Footer */}
+              {/* Status Spec Strip */}
               <div style={{
                 marginTop: '16px',
                 textAlign: 'center',
-                fontSize: '0.72rem',
-                color: 'var(--gray-400)',
+                fontSize: '0.7rem',
+                color: 'var(--text-muted)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '14px'
+                gap: '14px',
+                fontFamily: 'var(--font-mono)'
               }}>
-                <span>Alkhidmat 1023 Fleet</span>
+                <span>ALKHIDMAT 1023 FLEET</span>
                 <span>•</span>
-                <span>80+ Tertiary Facilities</span>
+                <span>84 PUNJAB TERTIARY FACILITIES</span>
                 <span>•</span>
-                <span>Alibaba Cloud Healthcare AI</span>
+                <span>ALIBABA HEALTHCARE AI</span>
               </div>
 
             </div>
           </div>
         ) : (
           /* ============================================================
-             ACTIVE STATE: Emergency Command Center (2-Column Grid)
+             ACTIVE STATE: Emergency Operations Center (2-Column Grid)
              ============================================================ */
           <div style={{
             flex: 1,
@@ -426,8 +479,8 @@ function App() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 padding: '8px 12px',
-                background: 'var(--navy-50)',
-                border: '1px solid var(--navy-100)',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-subtle)',
                 borderRadius: 'var(--radius-md)'
               }}>
                 <button
@@ -436,27 +489,27 @@ function App() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '6px',
-                    background: 'var(--white)',
-                    border: '1px solid var(--gray-300)',
+                    background: 'rgba(255,255,255,0.06)',
+                    border: '1px solid var(--border-subtle)',
                     borderRadius: 'var(--radius-sm)',
                     padding: '5px 10px',
-                    fontSize: '0.76rem',
+                    fontSize: '0.74rem',
                     fontWeight: 700,
-                    color: 'var(--navy-800)',
+                    color: '#fff',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease'
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--navy-500)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--gray-300)'; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--cyan-400)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
                 >
                   <ArrowLeft size={13} />
-                  <span>New Emergency / Back</span>
+                  <span>Terminal Reset / New Intake</span>
                 </button>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.72rem', color: 'var(--gray-600)' }}>
-                  <span style={{ fontWeight: 600 }}>{region.name}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                  <span style={{ fontWeight: 600, color: 'var(--text-secondary)' }}>{region.name}</span>
                   <span>•</span>
-                  <span>{trafficMultiplier.toFixed(1)}× Traffic</span>
+                  <span style={{ fontFamily: 'var(--font-mono)' }}>{trafficMultiplier.toFixed(1)}× Traffic</span>
                 </div>
               </div>
 
@@ -464,8 +517,8 @@ function App() {
               <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
                   {[
-                    { key: 'citizen', label: 'Citizen', icon: User },
-                    { key: 'paramedic', label: 'Paramedic 1122', icon: Stethoscope }
+                    { key: 'citizen', label: 'Citizen View', icon: User },
+                    { key: 'paramedic', label: 'Paramedic 1122 CAD', icon: Stethoscope }
                   ].map(m => {
                     const isActive = mode === m.key;
                     return (
@@ -474,8 +527,8 @@ function App() {
                         onClick={() => setMode(m.key)}
                         style={{
                           padding: '8px 12px',
-                          background: isActive ? (m.key === 'citizen' ? 'var(--navy-800)' : 'var(--green-600)') : 'var(--white)',
-                          color: isActive ? '#fff' : 'var(--gray-500)',
+                          background: isActive ? (m.key === 'citizen' ? 'var(--navy-600)' : 'var(--green-600)') : 'transparent',
+                          color: isActive ? '#fff' : 'var(--text-muted)',
                           border: 'none',
                           cursor: 'pointer',
                           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
@@ -485,7 +538,7 @@ function App() {
                           transition: 'all 0.15s'
                         }}
                       >
-                        <m.icon size={14} />
+                        <m.icon size={13} />
                         <span>{m.label}</span>
                       </button>
                     );
@@ -496,13 +549,13 @@ function App() {
               {/* Traffic Multiplier Slider */}
               <div className="card" style={{ padding: '10px 14px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                  <span style={{ fontSize: '0.74rem', fontWeight: 600, color: 'var(--gray-600)', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <span style={{ fontSize: '0.74rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <Sliders size={12} /> Traffic Multiplier
                   </span>
                   <span style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.76rem', fontWeight: 700,
-                    color: trafficMultiplier > 1.5 ? 'var(--red-500)' : (trafficMultiplier > 1.2 ? 'var(--amber-500)' : 'var(--green-600)')
+                    color: trafficMultiplier > 1.5 ? 'var(--red-500)' : (trafficMultiplier > 1.2 ? 'var(--amber-500)' : 'var(--green-400)')
                   }}>
                     {trafficMultiplier.toFixed(1)}×
                   </span>
@@ -524,24 +577,24 @@ function App() {
                 />
               </div>
 
-              {/* Chat Input for Refinement */}
+              {/* Incident Input for Refinement */}
               <ChatInput mode={mode} onSubmit={handleSubmit} isProcessing={isProcessing} />
 
-              {/* User Message Echo */}
+              {/* Incident Transmission Log */}
               {userMessage && (
                 <div style={{
                   padding: '9px 12px',
-                  background: 'var(--navy-50)',
+                  background: 'rgba(255, 255, 255, 0.04)',
                   borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--navy-100)',
-                  fontSize: '0.78rem', color: 'var(--navy-700)',
-                  fontStyle: 'italic',
+                  border: '1px solid var(--border-subtle)',
+                  fontSize: '0.76rem', color: 'var(--cyan-300)',
+                  fontFamily: 'var(--font-mono)',
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '6px'
                 }}>
-                  <span>💬</span>
-                  <span>"{userMessage}"</span>
+                  <Radio size={13} color="var(--cyan-400)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <span>TRANSMISSION: "{userMessage}"</span>
                 </div>
               )}
 
@@ -567,18 +620,19 @@ function App() {
               {/* Map Header Overlay */}
               <div style={{
                 position: 'absolute', top: '12px', left: '12px', zIndex: 500,
-                background: 'rgba(11, 37, 69, 0.92)',
+                background: 'rgba(6, 17, 30, 0.92)',
                 backdropFilter: 'blur(8px)',
                 borderRadius: 'var(--radius-md)',
                 padding: '7px 12px',
+                border: '1px solid var(--border-subtle)',
                 display: 'flex', alignItems: 'center', gap: '8px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                boxShadow: '0 4px 12px rgba(0,0,0,0.4)'
               }}>
-                <MapPin size={14} color="var(--green-400)" />
+                <MapPin size={13} color="var(--green-400)" />
                 <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#fff' }}>
                   {region.name || 'Punjab'}
                 </span>
-                <span style={{ fontSize: '0.66rem', color: 'var(--green-400)', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.66rem', color: 'var(--green-400)', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
                   {region.hospitals?.length || 0} Facilities
                 </span>
                 {hospitals.length > 0 && (
@@ -595,9 +649,9 @@ function App() {
                 <button
                   onClick={() => setActiveTab('registry')}
                   style={{
-                    background: 'rgba(11, 37, 69, 0.88)',
+                    background: 'rgba(6, 17, 30, 0.88)',
                     backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(255,255,255,0.15)',
+                    border: '1px solid var(--border-subtle)',
                     borderRadius: 'var(--radius-md)',
                     color: '#fff',
                     fontSize: '0.74rem',
@@ -609,7 +663,7 @@ function App() {
                     cursor: 'pointer'
                   }}
                 >
-                  <Building2 size={13} color="var(--green-400)" />
+                  <Building2 size={12} color="var(--green-400)" />
                   <span>Browse 80+ Facilities</span>
                 </button>
               </div>

@@ -1,28 +1,47 @@
 /* ================================================================
-   SehatRoute AI — Alkhidmat Design System
-   Colors: Navy #0B2545 / #134074, White #FFFFFF, Green #00897B
+   SehatRoute AI — Emergency Command Center Design System
+   Palantir / Tactical CAD Inspired Aesthetic
    ================================================================ */
 
 :root {
-  /* Alkhidmat Core Palette */
-  --navy-900: #07192b;
-  --navy-800: #0B2545;
-  --navy-700: #134074;
-  --navy-600: #1B4F8A;
-  --navy-500: #2563a0;
-  --navy-400: #3b82c4;
-  --navy-300: #6ba3d6;
-  --navy-200: #a3c4e9;
-  --navy-100: #dbe9f7;
+  /* Tactical Slate & Navy Palette */
+  --bg-app: #06111e;
+  --bg-surface: #0b1c2f;
+  --bg-surface-elevated: #10263f;
+  --bg-surface-hover: #163252;
+  --bg-input: #081626;
+
+  --navy-900: #050d18;
+  --navy-800: #0b1c2f;
+  --navy-700: #10263f;
+  --navy-600: #19385c;
+  --navy-500: #255285;
+  --navy-400: #3b7abb;
+  --navy-300: #70a4dc;
+  --navy-200: #a8cbf3;
+  --navy-100: #dceaf8;
   --navy-50: #f0f6fc;
 
-  --green-700: #00695c;
+  /* Alkhidmat Emerald & Cyan Accents */
+  --green-700: #004d40;
   --green-600: #00897B;
-  --green-500: #26a69a;
-  --green-400: #4db6ac;
-  --green-300: #80cbc4;
-  --green-200: #b2dfdb;
-  --green-100: #e0f2f1;
+  --green-500: #10b981;
+  --green-400: #34d399;
+  --green-300: #6ee7b7;
+  --green-200: #a7f3d0;
+  --green-100: #d1fae5;
+
+  --cyan-500: #06b6d4;
+  --cyan-400: #22d3ee;
+  --cyan-300: #67e8f9;
+
+  /* Neutral & Contrast Text */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-highlight: rgba(0, 137, 123, 0.4);
 
   --white: #ffffff;
   --gray-50: #f8fafc;
@@ -35,11 +54,12 @@
   --gray-700: #334155;
 
   --red-500: #ef4444;
-  --red-100: #fee2e2;
   --red-600: #dc2626;
+  --red-100: rgba(239, 68, 68, 0.15);
 
   --amber-500: #f59e0b;
-  --amber-100: #fef3c7;
+  --amber-600: #d97706;
+  --amber-100: rgba(245, 158, 11, 0.15);
 
   --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
@@ -50,17 +70,23 @@
   --radius-xl: 20px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 1px 3px rgba(11, 37, 69, 0.08);
-  --shadow-md: 0 4px 12px rgba(11, 37, 69, 0.1);
-  --shadow-lg: 0 8px 30px rgba(11, 37, 69, 0.12);
-  --shadow-xl: 0 16px 48px rgba(11, 37, 69, 0.16);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 24px rgba(0, 137, 123, 0.25);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--gray-50);
-  color: var(--navy-800);
+  background-color: var(--bg-app);
+  background-image: 
+    radial-gradient(ellipse at 50% -10%, rgba(0, 137, 123, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 90% 100%, rgba(16, 38, 63, 0.3) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  color: var(--text-primary);
   font-family: var(--font-sans);
   min-height: 100vh;
   line-height: 1.5;
@@ -70,25 +96,27 @@ body {
 /* Scrollbars */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--navy-200); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--navy-400); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.28); }
 
 /* ===================== Cards & Panels ===================== */
 .card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  color: var(--text-primary);
 }
 .card:hover {
+  border-color: var(--border-medium);
   box-shadow: var(--shadow-md);
 }
 
 .card-navy {
-  background: var(--navy-800);
-  border: 1px solid var(--navy-700);
-  color: var(--white);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
 }
 
 /* ===================== Badges ===================== */
@@ -98,27 +126,31 @@ body {
   gap: 4px;
   padding: 3px 10px;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--radius-full);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   white-space: nowrap;
 }
 
 .badge-green {
-  background: var(--green-100);
-  color: var(--green-700);
+  background: rgba(16, 185, 129, 0.16);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 .badge-navy {
-  background: var(--navy-100);
-  color: var(--navy-700);
+  background: rgba(37, 82, 133, 0.3);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 122, 187, 0.4);
 }
 .badge-red {
-  background: var(--red-100);
-  color: var(--red-600);
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
 }
 .badge-amber {
-  background: var(--amber-100);
-  color: #92400e;
+  background: rgba(245, 158, 11, 0.18);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.4);
 }
 
 /* ===================== Buttons ===================== */
@@ -127,9 +159,9 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 9px 18px;
-  font-size: 0.88rem;
-  font-weight: 600;
+  padding: 8px 16px;
+  font-size: 0.84rem;
+  font-weight: 700;
   border-radius: var(--radius-md);
   border: none;
   cursor: pointer;
@@ -140,76 +172,100 @@ body {
 .btn:active { transform: scale(0.98); }
 
 .btn-navy {
-  background: var(--navy-800);
-  color: var(--white);
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
 }
 .btn-navy:hover {
-  background: var(--navy-700);
-  box-shadow: 0 4px 14px rgba(11, 37, 69, 0.25);
+  background: var(--bg-surface-hover);
+  border-color: var(--cyan-400);
 }
 
 .btn-green {
   background: var(--green-600);
-  color: var(--white);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 .btn-green:hover {
-  background: var(--green-700);
-  box-shadow: 0 4px 14px rgba(0, 137, 123, 0.3);
+  background: #009688;
+  box-shadow: var(--shadow-glow);
 }
 
 .btn-white {
-  background: var(--white);
-  color: var(--navy-800);
-  border: 1px solid var(--gray-200);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
 }
 .btn-white:hover {
-  background: var(--gray-50);
-  border-color: var(--gray-300);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--border-medium);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--navy-700);
-  border: 1px solid var(--gray-300);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
 }
 .btn-outline:hover {
-  background: var(--navy-50);
-  border-color: var(--navy-400);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
 }
 
 .btn-sm {
   padding: 5px 12px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
+}
+
+/* ===================== Alert Banners ===================== */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.78rem;
+}
+.alert-banner-amber {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fde68a;
+}
+.alert-banner-red {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
 }
 
 /* ===================== Typography ===================== */
 .font-mono { font-family: var(--font-mono); }
 
-.text-muted { color: var(--gray-500); }
-.text-navy { color: var(--navy-800); }
-.text-green { color: var(--green-600); }
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+.text-primary { color: var(--text-primary); }
+.text-green { color: var(--green-400); }
+.text-cyan { color: var(--cyan-400); }
 .text-red { color: var(--red-500); }
-.text-white { color: var(--white); }
 
 /* ===================== Leaflet Overrides ===================== */
 .leaflet-container {
-  background: var(--navy-800) !important;
+  background: #06111e !important;
   font-family: var(--font-sans);
   border-radius: var(--radius-lg);
 }
 
 .leaflet-tile {
-  filter: brightness(0.55) invert(1) contrast(2.8) hue-rotate(195deg) saturate(0.25) brightness(0.75) !important;
+  filter: brightness(0.6) invert(1) contrast(2.6) hue-rotate(195deg) saturate(0.25) brightness(0.8) !important;
 }
 
 .leaflet-popup-content-wrapper {
-  background: var(--white) !important;
-  border: 1px solid var(--gray-200) !important;
-  color: var(--navy-800) !important;
+  background: #0b1c2f !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #f8fafc !important;
   border-radius: var(--radius-md) !important;
-  box-shadow: var(--shadow-lg) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
 }
-.leaflet-popup-tip { background: var(--white) !important; }
+.leaflet-popup-tip { background: #0b1c2f !important; }
 
 /* ===================== Animations ===================== */
 @keyframes pulse-ring {
@@ -217,71 +273,32 @@ body {
   100% { transform: scale(1.6); opacity: 0; }
 }
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fade-in { animation: fade-in 0.3s ease forwards; }
-.animate-slide-up { animation: slide-up 0.4s ease forwards; }
-
-/* ===================== Code Block ===================== */
-pre.code-block {
-  background: var(--navy-800);
-  border: 1px solid var(--navy-700);
-  border-radius: var(--radius-md);
-  padding: 14px;
-  overflow-x: auto;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--green-300);
-  line-height: 1.5;
-}
+.animate-fade-in { animation: fade-in 0.25s ease forwards; }
+.animate-slide-up { animation: slide-up 0.3s ease forwards; }
 
 /* ===================== Range Input ===================== */
 input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
   height: 5px;
-  background: var(--gray-200);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 3px;
   outline: none;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: var(--navy-700);
+  background: var(--green-400);
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(19, 64, 116, 0.3);
-}
-
-/* ===================== Toast / Alert Banner ===================== */
-.alert-banner {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  border-radius: var(--radius-md);
-  font-size: 0.82rem;
-  font-weight: 500;
-}
-.alert-banner-red {
-  background: var(--red-100);
-  color: var(--red-600);
-  border: 1px solid #fca5a5;
-}
-.alert-banner-green {
-  background: var(--green-100);
-  color: var(--green-700);
-  border: 1px solid var(--green-300);
-}
-.alert-banner-amber {
-  background: var(--amber-100);
-  color: #92400e;
-  border: 1px solid #fcd34d;
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.5);
 }

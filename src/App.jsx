@@ -243,25 +243,6 @@ function App() {
             margin: '0 auto',
             width: '100%'
           }}>
-            {/* Live Operational Beacon */}
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '4px 12px',
-              background: 'rgba(0, 137, 123, 0.12)',
-              border: '1px solid rgba(0, 137, 123, 0.3)',
-              borderRadius: 'var(--radius-full)',
-              marginBottom: '18px',
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              color: 'var(--green-400)',
-              fontFamily: 'var(--font-mono)',
-              letterSpacing: '0.04em'
-            }}>
-              <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--green-400)', display: 'inline-block', boxShadow: '0 0 8px var(--green-400)' }} />
-              <span>ALKHIDMAT 1023 FLEET CAD // PUNJAB GRID LIVE</span>
-            </div>
 
             {/* Official Co-Branding Logos */}
             <div style={{
@@ -427,24 +408,6 @@ function App() {
                 })}
               </div>
 
-              {/* Status Spec Strip */}
-              <div style={{
-                marginTop: '16px',
-                textAlign: 'center',
-                fontSize: '0.7rem',
-                color: 'var(--text-muted)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '14px',
-                fontFamily: 'var(--font-mono)'
-              }}>
-                <span>ALKHIDMAT 1023 FLEET</span>
-                <span>•</span>
-                <span>84 PUNJAB TERTIARY FACILITIES</span>
-                <span>•</span>
-                <span>ALIBABA HEALTHCARE AI</span>
-              </div>
 
             </div>
           </div>

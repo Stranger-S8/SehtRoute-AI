@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Send, 
-  User, 
-  Stethoscope, 
   HeartPulse, 
   AlertTriangle, 
   Activity, 
@@ -54,41 +52,6 @@ export default function ChatInput({ mode, onSubmit, isProcessing }) {
       boxShadow: 'var(--shadow-md)',
       transition: 'border-color 0.2s'
     }}>
-      {/* Console Bar Header */}
-      <div style={{
-        background: mode === 'citizen' ? 'rgba(16, 38, 63, 0.7)' : 'rgba(0, 137, 123, 0.25)',
-        borderBottom: '1px solid var(--border-subtle)',
-        padding: '8px 16px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          {mode === 'citizen' ? (
-            <User size={14} color="var(--cyan-400)" />
-          ) : (
-            <Stethoscope size={14} color="var(--green-400)" />
-          )}
-          <span style={{
-            fontSize: '0.74rem',
-            fontWeight: 700,
-            letterSpacing: '0.04em',
-            textTransform: 'uppercase',
-            color: mode === 'citizen' ? 'var(--cyan-300)' : 'var(--green-300)'
-          }}>
-            {mode === 'citizen' ? 'Citizen Tele-Report Channel' : 'Paramedic 1122 CAD Channel'}
-          </span>
-        </div>
-
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: '6px',
-          fontSize: '0.68rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)'
-        }}>
-          <span>URDU / ROMAN / EN</span>
-          <span>•</span>
-          <span style={{ color: 'var(--green-400)' }}>ONLINE</span>
-        </div>
-      </div>
 
       {/* Paramedic Fast Presets */}
       {mode === 'paramedic' && (

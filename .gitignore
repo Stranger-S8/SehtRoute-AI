@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+dist/
+
+# Local Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+
+# Pitch Deck Materials & Utility Generation Scripts
+deck_materials/
+scratch/
+pptx_preview/
+*.pptx
+*.pdf
+.~lock*
+
+# Logs & System Files
+*.log
+.DS_Store
+.vscode/
+.idea/

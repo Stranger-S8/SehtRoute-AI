@@ -1,0 +1,287 @@
+/* ================================================================
+   SehatRoute AI — Alkhidmat Design System
+   Colors: Navy #0B2545 / #134074, White #FFFFFF, Green #00897B
+   ================================================================ */
+
+:root {
+  /* Alkhidmat Core Palette */
+  --navy-900: #07192b;
+  --navy-800: #0B2545;
+  --navy-700: #134074;
+  --navy-600: #1B4F8A;
+  --navy-500: #2563a0;
+  --navy-400: #3b82c4;
+  --navy-300: #6ba3d6;
+  --navy-200: #a3c4e9;
+  --navy-100: #dbe9f7;
+  --navy-50: #f0f6fc;
+
+  --green-700: #00695c;
+  --green-600: #00897B;
+  --green-500: #26a69a;
+  --green-400: #4db6ac;
+  --green-300: #80cbc4;
+  --green-200: #b2dfdb;
+  --green-100: #e0f2f1;
+
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+
+  --red-500: #ef4444;
+  --red-100: #fee2e2;
+  --red-600: #dc2626;
+
+  --amber-500: #f59e0b;
+  --amber-100: #fef3c7;
+
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(11, 37, 69, 0.08);
+  --shadow-md: 0 4px 12px rgba(11, 37, 69, 0.1);
+  --shadow-lg: 0 8px 30px rgba(11, 37, 69, 0.12);
+  --shadow-xl: 0 16px 48px rgba(11, 37, 69, 0.16);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--gray-50);
+  color: var(--navy-800);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--navy-200); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--navy-400); }
+
+/* ===================== Cards & Panels ===================== */
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-navy {
+  background: var(--navy-800);
+  border: 1px solid var(--navy-700);
+  color: var(--white);
+}
+
+/* ===================== Badges ===================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.badge-green {
+  background: var(--green-100);
+  color: var(--green-700);
+}
+.badge-navy {
+  background: var(--navy-100);
+  color: var(--navy-700);
+}
+.badge-red {
+  background: var(--red-100);
+  color: var(--red-600);
+}
+.badge-amber {
+  background: var(--amber-100);
+  color: #92400e;
+}
+
+/* ===================== Buttons ===================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-sans);
+  text-decoration: none;
+}
+.btn:active { transform: scale(0.98); }
+
+.btn-navy {
+  background: var(--navy-800);
+  color: var(--white);
+}
+.btn-navy:hover {
+  background: var(--navy-700);
+  box-shadow: 0 4px 14px rgba(11, 37, 69, 0.25);
+}
+
+.btn-green {
+  background: var(--green-600);
+  color: var(--white);
+}
+.btn-green:hover {
+  background: var(--green-700);
+  box-shadow: 0 4px 14px rgba(0, 137, 123, 0.3);
+}
+
+.btn-white {
+  background: var(--white);
+  color: var(--navy-800);
+  border: 1px solid var(--gray-200);
+}
+.btn-white:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-300);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy-700);
+  border: 1px solid var(--gray-300);
+}
+.btn-outline:hover {
+  background: var(--navy-50);
+  border-color: var(--navy-400);
+}
+
+.btn-sm {
+  padding: 5px 12px;
+  font-size: 0.8rem;
+}
+
+/* ===================== Typography ===================== */
+.font-mono { font-family: var(--font-mono); }
+
+.text-muted { color: var(--gray-500); }
+.text-navy { color: var(--navy-800); }
+.text-green { color: var(--green-600); }
+.text-red { color: var(--red-500); }
+.text-white { color: var(--white); }
+
+/* ===================== Leaflet Overrides ===================== */
+.leaflet-container {
+  background: var(--navy-800) !important;
+  font-family: var(--font-sans);
+  border-radius: var(--radius-lg);
+}
+
+.leaflet-tile {
+  filter: brightness(0.55) invert(1) contrast(2.8) hue-rotate(195deg) saturate(0.25) brightness(0.75) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--white) !important;
+  border: 1px solid var(--gray-200) !important;
+  color: var(--navy-800) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+.leaflet-popup-tip { background: var(--white) !important; }
+
+/* ===================== Animations ===================== */
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in { animation: fade-in 0.3s ease forwards; }
+.animate-slide-up { animation: slide-up 0.4s ease forwards; }
+
+/* ===================== Code Block ===================== */
+pre.code-block {
+  background: var(--navy-800);
+  border: 1px solid var(--navy-700);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--green-300);
+  line-height: 1.5;
+}
+
+/* ===================== Range Input ===================== */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  background: var(--gray-200);
+  border-radius: 3px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--navy-700);
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(19, 64, 116, 0.3);
+}
+
+/* ===================== Toast / Alert Banner ===================== */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.alert-banner-red {
+  background: var(--red-100);
+  color: var(--red-600);
+  border: 1px solid #fca5a5;
+}
+.alert-banner-green {
+  background: var(--green-100);
+  color: var(--green-700);
+  border: 1px solid var(--green-300);
+}
+.alert-banner-amber {
+  background: var(--amber-100);
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}

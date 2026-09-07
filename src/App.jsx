@@ -17,24 +17,9 @@ import {
   MapPin, 
   Building2, 
   ArrowLeft, 
-  HeartPulse,
-  AlertTriangle,
-  Activity,
-  Wind,
-  Baby,
-  Flame,
-  Radio,
+  Radio, 
   Shield
 } from 'lucide-react';
-
-const TACTICAL_PRESETS = [
-  { label: 'Cardiac (STEMI)', icon: HeartPulse, text: 'Severe crushing chest pain radiating to left arm & diaphoresis, age 55 male. Suspected STEMI.' },
-  { label: 'Major Trauma', icon: AlertTriangle, text: 'Road accident on Canal Road, severe head bleeding and unconscious patient.' },
-  { label: 'Acute Stroke', icon: Activity, text: 'Sudden slurred speech, facial droop right side, onset 20 mins ago.' },
-  { label: 'Respiratory Failure', icon: Wind, text: 'Patient gasping for air, SpO2 81%, asthma history, cyanotic lips.' },
-  { label: 'Pediatric Critical', icon: Baby, text: 'Bacha 8 mahine ka hai, shadeed 104°F bukhar aur jhatkay lag rahe hain.' },
-  { label: 'Thermal / Burn', icon: Flame, text: 'Kitchen gas cylinder burst, 40% body burns, patient conscious in severe pain.' }
-];
 
 function App() {
   // Navigation
@@ -439,51 +424,6 @@ function App() {
 
               {/* Tactical Chat Input Component */}
               <ChatInput mode={mode} onSubmit={handleSubmit} isProcessing={isProcessing} />
-
-              {/* Clinical Protocol Quick Chips (Zero Emojis) */}
-              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>
-                <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginRight: '4px', letterSpacing: '0.04em' }}>
-                  Protocols:
-                </span>
-                {TACTICAL_PRESETS.map((preset, idx) => {
-                  const Icon = preset.icon;
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => handleSubmit(preset.text)}
-                      style={{
-                        padding: '5px 11px',
-                        background: 'rgba(255,255,255,0.04)',
-                        border: '1px solid var(--border-subtle)',
-                        borderRadius: 'var(--radius-sm)',
-                        fontSize: '0.72rem',
-                        fontWeight: 600,
-                        color: 'var(--text-secondary)',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '5px',
-                        transition: 'all 0.15s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = 'var(--cyan-400)';
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.09)';
-                        e.currentTarget.style.color = '#fff';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
-                        e.currentTarget.style.color = 'var(--text-secondary)';
-                      }}
-                    >
-                      <Icon size={11} color="var(--green-400)" />
-                      <span>{preset.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-
-
             </div>
           </div>
         ) : (

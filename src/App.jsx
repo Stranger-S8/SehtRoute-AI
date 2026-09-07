@@ -291,17 +291,42 @@ function App() {
             {/* Terminal Container */}
             <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
               
-              {/* Channel Selector & Region Info Bar */}
+              {/* Region Telemetry (Left) & Channel Mode Selector (Top Right) */}
               <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr auto',
-                gap: '10px',
-                alignItems: 'center'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '12px',
+                width: '100%'
               }}>
-                {/* Mode Selector */}
+                {/* Left: Division & Traffic Telemetry Badges */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <div style={{
+                    display: 'flex', alignItems: 'center', gap: '5px',
+                    padding: '6px 11px', background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
+                    fontSize: '0.74rem', color: '#fff', fontWeight: 600
+                  }}>
+                    <MapPin size={12} color="var(--green-400)" />
+                    <span>{region.name}</span>
+                  </div>
+
+                  <div style={{
+                    display: 'flex', alignItems: 'center', gap: '5px',
+                    padding: '6px 11px', background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
+                    fontSize: '0.74rem', color: '#fff', fontWeight: 600,
+                    fontFamily: 'var(--font-mono)'
+                  }}>
+                    <Sliders size={12} color="var(--cyan-400)" />
+                    <span>{trafficMultiplier.toFixed(1)}× Traffic</span>
+                  </div>
+                </div>
+
+                {/* Right: Mode Selector (TOP RIGHT) */}
                 <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
+                  display: 'inline-flex',
+                  alignItems: 'center',
                   background: 'var(--bg-input)',
                   padding: '3px',
                   borderRadius: 'var(--radius-md)',
@@ -317,7 +342,7 @@ function App() {
                         key={m.key}
                         onClick={() => setMode(m.key)}
                         style={{
-                          padding: '7px 12px',
+                          padding: '6px 12px',
                           background: isActive ? (m.key === 'citizen' ? 'var(--navy-600)' : 'var(--green-600)') : 'transparent',
                           color: isActive ? '#fff' : 'var(--text-muted)',
                           border: 'none',
@@ -326,7 +351,7 @@ function App() {
                           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
                           transition: 'all 0.15s ease',
                           fontFamily: 'var(--font-sans)',
-                          fontSize: '0.78rem',
+                          fontSize: '0.76rem',
                           fontWeight: 700
                         }}
                       >
@@ -335,30 +360,6 @@ function App() {
                       </button>
                     );
                   })}
-                </div>
-
-                {/* Division & Traffic Telemetry Badges */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: '5px',
-                    padding: '7px 11px', background: 'var(--bg-surface)',
-                    border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
-                    fontSize: '0.74rem', color: '#fff', fontWeight: 600
-                  }}>
-                    <MapPin size={12} color="var(--green-400)" />
-                    <span>{region.name}</span>
-                  </div>
-
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: '5px',
-                    padding: '7px 11px', background: 'var(--bg-surface)',
-                    border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
-                    fontSize: '0.74rem', color: '#fff', fontWeight: 600,
-                    fontFamily: 'var(--font-mono)'
-                  }}>
-                    <Sliders size={12} color="var(--cyan-400)" />
-                    <span>{trafficMultiplier.toFixed(1)}× Traffic</span>
-                  </div>
                 </div>
               </div>
 

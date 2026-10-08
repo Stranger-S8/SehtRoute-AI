@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780" style="background:#ffffff; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 8 5 L 0 9 z" fill="#475569"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+  </marker>
+</defs>
+  <rect x="40" y="30" width="1120" height="90" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+  <text x="500" y="69.0" font-size="24" fill="#38bdf8" font-weight="bold">SEHATROUTE AI — END-TO-END DISPATCH &amp; ROUTING FLOW</text>
+  <text x="520" y="94.0" font-size="14" fill="#94a3b8" font-weight="normal">From Emergency Call to Guaranteed Definitive Care Bay  •  Pre-Hospital Fleet: Alkhidmat 1023 &amp; Rescue 1122</text>
+  <rect x="40" y="150" width="200" height="160" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="60" y="176.0" font-size="14" fill="#1d4ed8" font-weight="bold">STEP 1: INTAKE</text>
+  <text x="60" y="194.0" font-size="12" fill="#475569" font-weight="normal">Multilingual Intake</text>
+  <text x="55" y="221.0" font-size="11" fill="#1e293b" font-weight="normal">• Citizen or 1122 / 1023 call</text>
+  <text x="55" y="235.85" font-size="11" fill="#1e293b" font-weight="normal">• Voice / Text in Urdu,</text>
+  <text x="55" y="250.7" font-size="11" fill="#1e293b" font-weight="normal">  Roman Urdu, or English</text>
+  <text x="55" y="265.55" font-size="11" fill="#1e293b" font-weight="normal">• Zero complex forms</text>
+  <rect x="275" y="150" width="200" height="160" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="295" y="176.0" font-size="14" fill="#15803d" font-weight="bold">STEP 2: AI TRIAGE</text>
+  <text x="295" y="194.0" font-size="12" fill="#475569" font-weight="normal">Clinical Parsing</text>
+  <text x="290" y="221.0" font-size="11" fill="#1e293b" font-weight="normal">• Google Gemini + Fallback</text>
+  <text x="290" y="235.85" font-size="11" fill="#1e293b" font-weight="normal">• ESI Urgency Level (1–5)</text>
+  <text x="290" y="250.7" font-size="11" fill="#1e293b" font-weight="normal">• Extracts mandatory asset:</text>
+  <text x="290" y="265.55" font-size="11" fill="#1e293b" font-weight="normal">  [Cath Lab, ICU, Burns]</text>
+  <rect x="510" y="150" width="200" height="160" rx="8" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
+  <text x="530" y="176.0" font-size="14" fill="#a16207" font-weight="bold">STEP 3: TELEMETRY</text>
+  <text x="530" y="194.0" font-size="12" fill="#475569" font-weight="normal">Dual-Stream Ingestion</text>
+  <text x="525" y="221.0" font-size="11" fill="#1e293b" font-weight="normal">• Road: Google/TPL Maps (T_transit)</text>
+  <text x="525" y="235.85" font-size="11" fill="#1e293b" font-weight="normal">• Hospital: Punjab HISDU live</text>
+  <text x="525" y="250.7" font-size="11" fill="#1e293b" font-weight="normal">  portal + 1-tap nurse counter</text>
+  <text x="525" y="265.55" font-size="11" fill="#1e293b" font-weight="normal">• NEDOCS queue backlog</text>
+  <rect x="745" y="150" width="200" height="160" rx="8" fill="#faf5ff" stroke="#a855f7" stroke-width="2"/>
+  <text x="765" y="176.0" font-size="14" fill="#7e22ce" font-weight="bold">STEP 4: TTDC ENGINE</text>
+  <text x="765" y="194.0" font-size="12" fill="#475569" font-weight="normal">Definitive Routing</text>
+  <text x="760" y="221.0" font-size="11" fill="#1e293b" font-weight="normal">• Min (Transit + Queue + Gate)</text>
+  <text x="760" y="235.85" font-size="11" fill="#1e293b" font-weight="normal">• If asset missing: penalty = +∞</text>
+  <text x="760" y="250.7" font-size="11" fill="#1e293b" font-weight="normal">  (Instant auto-bypass)</text>
+  <text x="760" y="265.55" font-size="11" fill="#1e293b" font-weight="normal">• Ranked candidate matrix</text>
+  <rect x="980" y="150" width="200" height="160" rx="8" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+  <text x="1000" y="176.0" font-size="14" fill="#be123c" font-weight="bold">STEP 5: ATOMIC LOCK</text>
+  <text x="1000" y="194.0" font-size="12" fill="#475569" font-weight="normal">Distributed Lease</text>
+  <text x="995" y="221.0" font-size="11" fill="#1e293b" font-weight="normal">• Redis SET NX PX 45-min TTL</text>
+  <text x="995" y="235.85" font-size="11" fill="#1e293b" font-weight="normal">• Prevents Thundering Herd</text>
+  <text x="995" y="250.7" font-size="11" fill="#1e293b" font-weight="normal">• Bed reserved exclusively</text>
+  <text x="995" y="265.55" font-size="11" fill="#1e293b" font-weight="normal">  while ambulance is en route</text>
+  <line x1="240" y1="230" x2="275" y2="230" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="475" y1="230" x2="510" y2="230" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="710" y1="230" x2="745" y2="230" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="945" y1="230" x2="980" y2="230" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="40" y="360" width="1120" height="240" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="400" y="390.0" font-size="15" fill="#0f172a" font-weight="normal">REAL-WORLD CLINICAL IMPACT COMPARISON (STEMI CARDIAC EMERGENCY IN LAHORE)</text>
+  <rect x="60" y="410" width="510" height="160" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="80" y="435.0" font-size="13" fill="#b91c1c" font-weight="bold">❌ TRADITIONAL ROUTING (Google Maps / Closest ER)</text>
+  <text x="80" y="456.0" font-size="11" fill="#7f1d1d" font-weight="normal">1. Ambulance routes to closest hospital: Mayo Hospital (6 min transit)</text>
+  <text x="80" y="470.85" font-size="11" fill="#7f1d1d" font-weight="normal">2. Unchecked Ground Reality: Cath Lab busy &amp; NEDOCS Level-6 overcrowding</text>
+  <text x="80" y="485.7" font-size="11" fill="#7f1d1d" font-weight="normal">3. Result: 45 min hallway offload delay + 0 available angioplasty slots</text>
+  <text x="80" y="500.55" font-size="11" fill="#7f1d1d" font-weight="normal">4. Triggers secondary inter-hospital transfer: 3.8 to 4.7 hours delay</text>
+  <text x="80" y="515.4" font-size="11" fill="#7f1d1d" font-weight="normal">⚠️ FATAL OUTCOME / EXTENSIVE MYOCARDIAL INFARCTION</text>
+  <rect x="610" y="410" width="530" height="160" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+  <text x="630" y="435.0" font-size="13" fill="#047857" font-weight="bold">✅ SEHATROUTE AI (TTDC Capacity-Aware Routing)</text>
+  <text x="630" y="456.0" font-size="11" fill="#065f46" font-weight="normal">1. Mayo Cath Lab busy -&gt; P_capacity = +∞ -&gt; Automated Algorithmic Bypass</text>
+  <text x="630" y="470.85" font-size="11" fill="#065f46" font-weight="normal">2. Next optimal candidate: Punjab Institute of Cardiology (PIC) (12 min transit)</text>
+  <text x="630" y="485.7" font-size="11" fill="#065f46" font-weight="normal">3. Pre-arrival Redis Atomic Lease locks Cath Lab Team en route</text>
+  <text x="630" y="500.55" font-size="11" fill="#065f46" font-weight="normal">4. Patient bypasses ER waiting queue directly to definitive angioplasty bay</text>
+  <text x="630" y="515.4" font-size="11" fill="#065f46" font-weight="normal">🎉 DEFINITIVE TREATMENT IN 16 MINUTES / HEART MUSCLE PRESERVED</text>
+  <line x1="1080" y1="310" x2="875" y2="410" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="40" y="630" width="1120" height="110" rx="8" fill="#0f172a" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="659.0" font-size="14" fill="#a5b4fc" font-weight="bold">THREE-TIER ZERO-IT TELEMETRY ARCHITECTURE</text>
+  <rect x="60" y="670" width="340" height="55" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="75" y="687.0" font-size="11" fill="#38bdf8" font-weight="bold">TIER 1: HOSPITAL EDGE (NURSE)</text>
+  <text x="75" y="704.0" font-size="10" fill="#94a3b8" font-weight="normal">1-tap mobile/physical micro-counter (+1/-1 bed)</text>
+  <text x="75" y="717.5" font-size="10" fill="#94a3b8" font-weight="normal">at triage desk. Takes 2 seconds. Zero IT overhaul.</text>
+  <rect x="430" y="670" width="340" height="55" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="445" y="687.0" font-size="11" fill="#38bdf8" font-weight="bold">TIER 2: GOVERNMENT PORTAL INGESTION</text>
+  <text x="445" y="704.0" font-size="10" fill="#94a3b8" font-weight="normal">REST webhooks ingest live Punjab HISDU &amp; PITB</text>
+  <text x="445" y="717.5" font-size="10" fill="#94a3b8" font-weight="normal">Bed &amp; Ventilator Occupancy data into cloud core.</text>
+  <rect x="800" y="670" width="340" height="55" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="815" y="687.0" font-size="11" fill="#38bdf8" font-weight="bold">TIER 3: AUTOMATED STATE DECAY</text>
+  <text x="815" y="704.0" font-size="10" fill="#94a3b8" font-weight="normal">If network drops, capacity confidence decays to 0</text>
+  <text x="815" y="717.5" font-size="10" fill="#94a3b8" font-weight="normal">over 60 mins. No routing on stale assumptions.</text>
+</svg>

@@ -22,40 +22,40 @@ export const PITCH_DECK_SLIDES = [
     keyPoints: [
       {
         label: "96.7% Extreme Overcrowding",
-        value: "PAFMJ 2023 Study at PEMH Rawalpindi documented a mean NEDOCS score of 577.94 ± 251.57, with 96.7% of evaluated intervals categorized as Level-6 'Extremely Overcrowded'."
+        value: "PAFMJ 2023 Study (Zafar et al.) at PEMH Rawalpindi documented a mean NEDOCS score of 577.94 ± 251.57, with 29 of 30 evaluated intervals (96.7%) categorized as Level-6 'Extremely Overcrowded'."
       },
       {
         label: "0.71 ICU Beds per 100,000",
-        value: "Nationwide study published in Critical Care (PMC7441021) reveals Pakistan has only 0.71 ICU beds per 100k, and only 52.2% of surveyed ICUs maintain a 1:1 bed-to-ventilator ratio."
+        value: "Nationwide survey in Critical Care (PMC7441021) reveals Pakistan maintains only 0.71 ICU beds per 100k, and only 52.2% of surveyed ICUs maintain a 1:1 bed-to-ventilator ratio."
       },
       {
-        label: "Operational Blind Spot",
-        value: "Alkhidmat 1023 dispatchers field thousands of daily emergency calls without real-time API visibility into tertiary hospital bed or equipment availability."
+        label: "Trapped Administrative Telemetry",
+        value: "Punjab Health's HISDU tracks bed and ventilator occupancy digitally, but this data remains in administrative silos, completely disconnected from real-time ambulance routing."
       }
     ],
-    speakerNotes: "Look at the verified data: A peer-reviewed study at PEMH Rawalpindi showed that 96.7% of the time, the emergency department is in Level 6 catastrophic overcrowding. Meanwhile, Pakistan has only 0.71 ICU beds per 100,000 people. Routing blindly to the nearest hospital is a clinical death sentence."
+    speakerNotes: "Look at the verified data: A peer-reviewed study at PEMH Rawalpindi showed that 96.7% of the time, the emergency department is in Level 6 catastrophic overcrowding. Meanwhile, Pakistan has only 0.71 ICU beds per 100,000 people. Routing blindly to the nearest hospital without checking capacity traps patients in hallway delays."
   },
   {
     slideNumber: 3,
     tag: "THE TRAP // CLOSEST-DISTANCE ROUTING",
     title: "The Failure of 'Closest-Distance' Navigation",
-    subtitle: "How Standard GPS Traps Patients in Fatal Secondary Transfers",
-    coreThesis: "Google Maps and standard GPS algorithms minimize road distance (T_transit). In acute healthcare, this causes the deadly 'Secondary Referral Trap'.",
+    subtitle: "How Standard GPS Traps Patients in Severe Arrival Delays",
+    coreThesis: "Google Maps and standard GPS algorithms minimize road distance (T_transit). In acute healthcare, this causes severe arrival and secondary referral delays.",
     keyPoints: [
       {
-        label: "The Fatal AKUH Finding",
-        value: "Data from the Aga Khan University Hospital Trauma Registry revealed that secondary inter-hospital transfers cause a mean delay of 3.8 to 4.7 hours to definitive care."
+        label: "Mean 4.7-Hour Arrival Delay",
+        value: "Aga Khan University Hospital Trauma Registry data (Khan et al., Int J Surg) showed acute trauma patients experienced a mean injury-to-ER arrival delay of 4.7 hours."
       },
       {
-        label: "Statistically Proven Mortality Driver",
-        value: "The study proved this 4-hour delay is a statistically significant driver of pre-treatment mortality (p = 0.004)."
+        label: "Golden Hour Failure",
+        value: "Only 30.9% of trauma patients reached the emergency room within the critical first hour ('Golden Hour'), highlighting systemic pre-hospital transfer and routing friction."
       },
       {
         label: "The False Economy of 5 Minutes",
-        value: "Saving 4 minutes of driving time to drop a cardiac patient at a hospital with an offline Cath Lab results in a 240-minute delay trying to arrange a secondary transfer."
+        value: "Saving 4 minutes of driving time to drop a cardiac patient at an ER with an occupied Cath Lab triggers hours of offload delay or inter-facility transfer to definitive care."
       }
     ],
-    speakerNotes: "Traditional navigation assumes all destinations are equal. If an intubated patient is taken to an ER 5 minutes away that has 0 ventilators, they don't get saved — they get stuck in a hallway for 4 hours waiting for a secondary ambulance transfer. AKUH data proves this delay kills."
+    speakerNotes: "Traditional navigation assumes all destinations are equal. If an intubated or cardiac patient is taken to an ER 5 minutes away that has zero available ventilators or Cath Labs, they don't get saved — they get stuck in an offload bottleneck. AKUH registry data shows acute patients already face a mean 4.7-hour delay before reaching definitive care."
   },
   {
     slideNumber: 4,

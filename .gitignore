@@ -14,6 +14,7 @@ pptx_preview/
 *.pptx
 *.pdf
 .~lock*
+docs/*.html
 
 # Logs & System Files
 *.log

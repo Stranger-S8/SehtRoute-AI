@@ -1,23 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Send, 
-  HeartPulse, 
-  AlertTriangle, 
-  Activity, 
-  Wind, 
-  Baby, 
-  Flame,
   CornerDownLeft
 } from 'lucide-react';
-
-const CLINICAL_PRESETS = [
-  { label: 'STEMI / Cardiac', icon: HeartPulse, text: 'Severe chest pain radiating to left arm, diaphoresis, age 55 male. Suspected STEMI.' },
-  { label: 'Major Trauma', icon: AlertTriangle, text: 'Road traffic accident. Multiple fractures, significant blood loss, declining consciousness.' },
-  { label: 'Acute Stroke', icon: Activity, text: 'Sudden facial droop right side, slurred speech, cannot lift right arm. Onset 20 minutes ago.' },
-  { label: 'Respiratory Failure', icon: Wind, text: 'SpO2 dropping to 82%, severe dyspnea, patient cyanotic, COPD history. Needs ventilator.' },
-  { label: 'Pediatric Critical', icon: Baby, text: 'Infant 8 months, high fever 104°F, seizures, not responsive to stimulation.' },
-  { label: 'Severe Burns', icon: Flame, text: 'Kitchen gas explosion, 40% body surface area burns, patient conscious in severe pain.' },
-];
 
 export default function ChatInput({ mode, onSubmit, isProcessing }) {
   const [message, setMessage] = useState('');
@@ -52,60 +37,6 @@ export default function ChatInput({ mode, onSubmit, isProcessing }) {
       boxShadow: 'var(--shadow-md)',
       transition: 'border-color 0.2s'
     }}>
-
-      {/* Paramedic Fast Presets */}
-      {mode === 'paramedic' && (
-        <div style={{
-          padding: '10px 14px',
-          borderBottom: '1px solid var(--border-subtle)',
-          background: 'rgba(0,0,0,0.2)',
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '6px'
-        }}>
-          {CLINICAL_PRESETS.map((p, i) => {
-            const Icon = p.icon;
-            return (
-              <button
-                key={i}
-                onClick={() => onSubmit(p.text)}
-                disabled={isProcessing}
-                style={{
-                  padding: '5px 10px',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid var(--border-subtle)',
-                  borderRadius: 'var(--radius-sm)',
-                  cursor: isProcessing ? 'not-allowed' : 'pointer',
-                  fontSize: '0.74rem',
-                  fontWeight: 600,
-                  color: 'var(--text-secondary)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  fontFamily: 'var(--font-sans)',
-                  transition: 'all 0.15s ease',
-                  opacity: isProcessing ? 0.5 : 1
-                }}
-                onMouseEnter={(e) => {
-                  if (!isProcessing) {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.12)';
-                    e.currentTarget.style.color = '#fff';
-                    e.currentTarget.style.borderColor = 'var(--cyan-400)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                  e.currentTarget.style.color = 'var(--text-secondary)';
-                  e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                }}
-              >
-                <Icon size={12} color="var(--green-400)" />
-                <span>{p.label}</span>
-              </button>
-            );
-          })}
-        </div>
-      )}
 
       {/* Intake Textarea & Action Bar */}
       <div style={{
